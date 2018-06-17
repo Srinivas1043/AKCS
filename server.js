@@ -47,4 +47,4 @@ app.get('/contact', function(req, res) {
   res.render('contact');
 });
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
