@@ -2,6 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const app = express();
 const path = require('path');
+const checkUrlHost = require('./public/helpers/checkUrlHost');
 const fetchNews = require('./public/services/newsApi');
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -13,7 +14,9 @@ app.set('view engine', 'hbs');
 
 //Route setup
 app.get(['/','/home'], function(req, res) {
-  res.render('home');
+  const company = checkUrlHost(req);
+  console.log(company);
+  res.render('home', { company: company });
 });
 
 app.get('/news', function(req, res) {
