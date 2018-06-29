@@ -15,7 +15,6 @@ app.set('view engine', 'hbs');
 //Route setup
 app.get(['/','/home'], function(req, res) {
   const company = checkUrlHost(req);
-  console.log(company);
   res.render('home', { company: company });
 });
 
